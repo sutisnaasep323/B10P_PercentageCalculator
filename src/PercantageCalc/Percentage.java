@@ -30,14 +30,15 @@ public class Percentage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Label1 = new javax.swing.JLabel();
         TF1 = new javax.swing.JTextField();
-        calculate = new javax.swing.JButton();
+        exitBtnn = new javax.swing.JButton();
         Label2 = new javax.swing.JLabel();
         TF2 = new javax.swing.JTextField();
         TF3 = new javax.swing.JTextField();
         clearBtn = new javax.swing.JButton();
-        exitBtn = new javax.swing.JButton();
+        calculate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Percantage Calculator");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 51));
         jPanel1.setForeground(new java.awt.Color(255, 204, 102));
@@ -47,12 +48,17 @@ public class Percentage extends javax.swing.JFrame {
 
         TF1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        calculate.setText("Exit");
+        exitBtnn.setText("Exit");
+        exitBtnn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitBtnnActionPerformed(evt);
+            }
+        });
 
         Label2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Label2.setForeground(new java.awt.Color(0, 0, 0));
         Label2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Label2.setText("%");
+        Label2.setText("% of");
 
         TF2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
@@ -70,7 +76,12 @@ public class Percentage extends javax.swing.JFrame {
             }
         });
 
-        exitBtn.setText("Calculate");
+        calculate.setText("Calculate");
+        calculate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calculateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,7 +90,7 @@ public class Percentage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(140, 140, 140)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(exitBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                    .addComponent(calculate, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
                     .addComponent(TF3))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -88,7 +99,7 @@ public class Percentage extends javax.swing.JFrame {
                         .addGap(108, 108, 108)
                         .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(exitBtnn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(Label1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -112,11 +123,11 @@ public class Percentage extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(TF3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(exitBtnn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54))
         );
 
@@ -139,8 +150,25 @@ public class Percentage extends javax.swing.JFrame {
     }//GEN-LAST:event_TF3ActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
-        // TODO add your handling code here:
+        String clear = "";
+        TF1.setText(clear);
+        TF2.setText(clear);
+        TF3.setText(clear);
     }//GEN-LAST:event_clearBtnActionPerformed
+
+    private void calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateActionPerformed
+        float num1, num2, result;
+        
+        num1 = Float.parseFloat(TF1.getText());
+        num2 = Float.parseFloat(TF2.getText());
+        result = num2 / 100 * num1;
+        
+        TF3.setText(String.valueOf(result));
+    }//GEN-LAST:event_calculateActionPerformed
+
+    private void exitBtnnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnnActionPerformed
+            System.exit(0);
+    }//GEN-LAST:event_exitBtnnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,7 +213,7 @@ public class Percentage extends javax.swing.JFrame {
     private javax.swing.JTextField TF3;
     private javax.swing.JButton calculate;
     private javax.swing.JButton clearBtn;
-    private javax.swing.JButton exitBtn;
+    private javax.swing.JButton exitBtnn;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
